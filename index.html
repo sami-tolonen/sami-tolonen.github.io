@@ -5,242 +5,536 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>Sami Tolonen – IT-projektit</title>
-<meta name="description" content="Käytännön IT-projekteja: palvelinten ylläpito, verkkoseuranta, automaatio ja tiedonhallinta.">
+<meta name="description" content="Käytännön IT-projekteja: palvelinten ylläpito, verkkoseuranta, tietoturva ja tiedonhallinta.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
-  --bg: #f6f6f9;
-  --paper: #ffffff;
-  --ink: #1d1b26;
-  --ink-2: #565266;
-  --line: #e3e1ea;
-  --accent: #4b2a9e;
-  --accent-soft: #efeaff;
-  --chip-border: #cfc8e6;
+  --bg: #f4f3f8;
+  --surface: #ffffff;
+  --surface-2: #f8f7fc;
+  --ink: #17151f;
+  --ink-2: #5b5769;
+  --ink-3: #8a8699;
+  --line: #e4e1ec;
+  --accent: #5b34c9;
+  --accent-ink: #ffffff;
+  --accent-soft: #ece6ff;
+  --shadow: 0 1px 2px rgba(23, 21, 31, .05), 0 8px 24px rgba(23, 21, 31, .06);
+  --shadow-hover: 0 2px 4px rgba(23, 21, 31, .06), 0 16px 40px rgba(23, 21, 31, .12);
+  --radius: 16px;
 }
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg: #121118;
-    --paper: #1b1a23;
-    --ink: #ebe9f2;
-    --ink-2: #a8a3b8;
-    --line: #2e2b3a;
-    --accent: #b9a2ff;
-    --accent-soft: #2a2440;
-    --chip-border: #433b5e;
+    --bg: #0f0e14;
+    --surface: #18171f;
+    --surface-2: #1f1d28;
+    --ink: #eeecf5;
+    --ink-2: #aaa5bb;
+    --ink-3: #7b7690;
+    --line: #2c2a38;
+    --accent: #a78bfa;
+    --accent-ink: #120f1c;
+    --accent-soft: #261f3d;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 8px 24px rgba(0, 0, 0, .25);
+    --shadow-hover: 0 2px 4px rgba(0, 0, 0, .3), 0 16px 40px rgba(0, 0, 0, .45);
   }
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
 body {
   margin: 0;
   background: var(--bg);
   color: var(--ink);
-  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  font: 16px/1.6 "Manrope", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 }
-main {
-  max-width: 860px;
-  margin: 40px auto;
-  padding: 48px 56px;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-}
-header { border-bottom: 1px solid var(--line); padding-bottom: 24px; margin-bottom: 8px; }
-h1 { margin: 0; font-size: 2rem; line-height: 1.2; letter-spacing: -0.01em; }
-.role { margin: 6px 0 16px; font-size: 1.15rem; color: var(--accent); font-weight: 600; }
-.contact { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0 0 16px; padding: 0; list-style: none; color: var(--ink-2); }
-.contact a { color: var(--ink); text-decoration-color: var(--chip-border); text-underline-offset: 3px; }
-.contact a:hover { color: var(--accent); }
-h2 {
-  margin: 36px 0 14px;
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: var(--accent);
-}
-p { margin: 0 0 12px; }
-ul { margin: 0 0 12px; padding-left: 20px; }
-li { margin-bottom: 4px; }
-.project { margin-bottom: 28px; }
-.project:last-child { margin-bottom: 0; }
-.project-head { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; flex-wrap: wrap; }
-.project h3 { margin: 0; font-size: 1.1rem; }
-.date { color: var(--ink-2); font-size: 0.92rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
-.lead { color: var(--ink-2); margin: 2px 0 8px; }
-.featured {
-  padding: 22px 24px;
-  border: 1px solid var(--chip-border);
-  border-radius: 10px;
-  background: var(--accent-soft);
-}
-.badge {
-  display: inline-block;
-  margin-bottom: 8px;
-  padding: 1px 10px;
-  border-radius: 999px;
-  background: var(--accent);
-  color: var(--paper);
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.03em;
-}
-.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 0; padding: 0; list-style: none; }
-.chips li {
-  margin: 0;
-  padding: 2px 10px;
-  border: 1px solid var(--chip-border);
-  border-radius: 999px;
-  font-size: 0.85rem;
-  color: var(--ink-2);
-}
-.skills { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 40px; }
-.skills h3 { margin: 0 0 4px; font-size: 1rem; }
-.skills p { color: var(--ink-2); margin: 0; }
-footer { margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 0.85rem; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+a { color: inherit; }
 
-@media (max-width: 700px) {
-  main { margin: 0; padding: 28px 16px; border: 0; border-radius: 0; }
-  h1 { font-size: 1.7rem; }
-  .featured { padding: 18px 16px; }
-  .skills { grid-template-columns: 1fr; }
+/* Hero */
+.hero { padding: 72px 0 48px; }
+.hero-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 48px; align-items: end; }
+.eyebrow { margin: 0 0 12px; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--accent); }
+h1 { margin: 0; font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 1.05; letter-spacing: -.03em; font-weight: 800; }
+.pitch { margin: 18px 0 28px; max-width: 34em; font-size: 1.1rem; color: var(--ink-2); }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+.btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  padding: 12px 20px; border-radius: 999px;
+  background: var(--accent); color: var(--accent-ink);
+  font-weight: 700; text-decoration: none; border: 0; font: inherit; font-weight: 700; cursor: pointer;
+  transition: transform .15s ease, box-shadow .15s ease;
 }
-@media print {
-  :root { --bg: #fff; --paper: #fff; --ink: #000; --ink-2: #444; --accent: #3b1f85; --accent-soft: #fff; --line: #ccc; --chip-border: #999; }
-  body { font-size: 10.5pt; }
-  main { margin: 0; padding: 0; border: 0; max-width: none; }
-  h2 { margin-top: 18px; }
-  .project { break-inside: avoid; }
-  .badge { color: #fff; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
-  footer { display: none; }
+.btn:hover { transform: translateY(-1px); box-shadow: var(--shadow); }
+.btn-ghost { background: transparent; color: var(--ink); border: 1px solid var(--line); }
+.meta { color: var(--ink-3); font-size: .95rem; }
+.focus-card {
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 22px 24px; box-shadow: var(--shadow);
+}
+.focus-card h2 { margin: 0 0 14px; font-size: .8rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
+.focus-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 12px; }
+.focus-list li { display: grid; grid-template-columns: 28px 1fr; gap: 10px; align-items: start; }
+.focus-list svg { width: 28px; height: 28px; color: var(--accent); }
+.focus-list strong { display: block; font-size: .98rem; }
+.focus-list span { color: var(--ink-2); font-size: .9rem; }
+
+/* Projects */
+.section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin: 16px 0 20px; }
+.section-head h2 { margin: 0; font-size: 1.6rem; letter-spacing: -.02em; }
+.section-head p { margin: 0; color: var(--ink-3); }
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.card {
+  position: relative; display: flex; flex-direction: column;
+  background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+  overflow: hidden; box-shadow: var(--shadow); text-align: left;
+  font: inherit; color: inherit; padding: 0; cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.card:hover { transform: translateY(-3px); box-shadow: var(--shadow-hover); border-color: color-mix(in srgb, var(--hue) 45%, var(--line)); }
+.card:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+.card.featured { grid-column: span 2; }
+.cover {
+  position: relative; height: 150px;
+  background:
+    radial-gradient(120% 140% at 100% 0%, color-mix(in srgb, var(--hue) 55%, transparent) 0%, transparent 60%),
+    linear-gradient(135deg, color-mix(in srgb, var(--hue) 22%, var(--surface-2)), var(--surface-2));
+  color: var(--hue);
+}
+.featured .cover { height: 190px; }
+.cover svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.cover .tag {
+  position: absolute; top: 14px; left: 14px;
+  padding: 3px 10px; border-radius: 999px;
+  background: var(--surface); color: var(--ink); font-size: .75rem; font-weight: 700; letter-spacing: .02em;
+  box-shadow: 0 1px 3px rgba(0,0,0,.08);
+}
+.cover .new {
+  position: absolute; top: 14px; right: 14px;
+  padding: 3px 10px; border-radius: 999px;
+  background: var(--accent); color: var(--accent-ink); font-size: .75rem; font-weight: 800;
+}
+.card-body { display: flex; flex-direction: column; gap: 8px; padding: 18px 20px 20px; flex: 1; }
+.card h3 { margin: 0; font-size: 1.15rem; line-height: 1.3; letter-spacing: -.01em; }
+.card p { margin: 0; color: var(--ink-2); font-size: .95rem; }
+.shows { margin-top: auto !important; padding-top: 10px; border-top: 1px dashed var(--line); font-size: .88rem !important; }
+.shows b { color: var(--ink); font-weight: 700; }
+.more { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; font-weight: 700; font-size: .9rem; color: var(--accent); }
+.more svg { width: 16px; height: 16px; transition: transform .2s ease; }
+.card:hover .more svg { transform: translateX(3px); }
+
+/* Skills */
+.skills { margin: 72px 0 0; padding: 32px; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); }
+.skills h2 { margin: 0 0 20px; font-size: 1.6rem; letter-spacing: -.02em; }
+.skill-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+.skill-grid h3 { margin: 0 0 8px; font-size: .95rem; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 0; padding: 0; list-style: none; }
+.chips li { padding: 3px 10px; border-radius: 999px; background: var(--accent-soft); font-size: .82rem; font-weight: 600; }
+
+footer { margin: 56px 0 40px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; color: var(--ink-3); font-size: .9rem; }
+
+/* Detail dialog */
+dialog {
+  width: min(760px, calc(100vw - 32px)); max-height: calc(100vh - 48px);
+  padding: 0; border: 1px solid var(--line); border-radius: 20px;
+  background: var(--surface); color: var(--ink); box-shadow: 0 30px 80px rgba(0,0,0,.35);
+  overflow: hidden;
+}
+dialog[open] { animation: pop .22s ease-out; }
+dialog::backdrop { background: rgba(15, 12, 25, .55); backdrop-filter: blur(4px); }
+@keyframes pop { from { opacity: 0; transform: translateY(12px) scale(.98); } to { opacity: 1; transform: none; } }
+.dlg-inner { max-height: calc(100vh - 48px); overflow: auto; }
+.dlg-cover { position: relative; height: 170px; }
+.dlg-close {
+  position: absolute; top: 14px; right: 14px; z-index: 2;
+  width: 38px; height: 38px; border-radius: 50%; border: 0;
+  background: var(--surface); color: var(--ink); cursor: pointer; font-size: 1.3rem; line-height: 1;
+  box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+.dlg-close:focus-visible { outline: 3px solid var(--accent); }
+.dlg-body { padding: 24px 32px 32px; }
+.dlg-body h2 { margin: 0 0 6px; font-size: 1.6rem; letter-spacing: -.02em; line-height: 1.2; }
+.dlg-body .lead { margin: 0 0 22px; color: var(--ink-2); font-size: 1.05rem; }
+.dlg-body h3 { margin: 22px 0 8px; font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--accent); }
+.dlg-body p { margin: 0 0 10px; }
+.dlg-body ul { margin: 0 0 10px; padding-left: 20px; }
+.dlg-body li { margin-bottom: 6px; }
+.callout { margin-top: 22px; padding: 16px 18px; border-radius: 12px; background: var(--accent-soft); }
+.callout h3 { margin-top: 0 !important; }
+.callout ul { margin-bottom: 0; }
+.dlg-body .chips { margin-top: 18px; }
+
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  .grid { grid-template-columns: repeat(2, 1fr); }
+  .skill-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 620px) {
+  .wrap { padding: 0 16px; }
+  .hero { padding: 40px 0 32px; }
+  .grid { grid-template-columns: 1fr; }
+  .card.featured { grid-column: auto; }
+  .featured .cover { height: 150px; }
+  .skills { padding: 22px 16px; }
+  .skill-grid { grid-template-columns: 1fr; }
+  .dlg-body { padding: 20px 18px 24px; }
+  .dlg-cover { height: 130px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition: none !important; animation: none !important; }
 }
 </style>
 </head>
 <body>
-<main>
-  <header>
-    <h1>Sami Tolonen</h1>
-    <p class="role">IT-tuki, ylläpito ja automaatio – käytännön projekteja</p>
-    <ul class="contact">
-      <li><a href="mailto:sami.tolonen.it@gmail.com">sami.tolonen.it@gmail.com</a></li>
-      <li>Oulu ja Kainuu</li>
-    </ul>
-    <p>Rakennan ja ylläpidän omia palveluita, palvelimia ja työkaluja. Toteutan ne tekoälyavusteisesti: määrittelen tarpeen, ohjaan toteutusta, testaan lopputuloksen ja vastaan ylläpidosta. Tämä sivu esittelee, mitä olen tehnyt käytännössä. Koulutus ja työhistoria löytyvät CV:stä.</p>
-  </header>
 
-  <section>
-    <h2>Uusimpana</h2>
-    <article class="project featured">
-      <span class="badge">Syksy 2026</span>
-      <div class="project-head">
-        <h3>SecondBrain – projektien tietopankki ja tekoälyagenttien työnkulku</h3>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><rect x="3" y="4" width="18" height="7" rx="2"/><rect x="3" y="13" width="18" height="7" rx="2"/><path d="M7 7.5h.01M7 16.5h.01M11 7.5h6M11 16.5h6"/></g></symbol>
+    <symbol id="i-pulse" viewBox="0 0 24 24"><path d="M3 12h4l2-6 4 12 2-6h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.5-3.4 8-8 9-4.6-1-8-4.5-8-9V6z"/><path d="M8.5 12l2.5 2.5 4.5-5"/></g></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5a2 2 0 012-2h13v16H6a2 2 0 00-2 2z"/><path d="M4 19V5M9 8h6M9 12h4"/></g></symbol>
+  </defs>
+</svg>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">IT-tuki · ylläpito · automaatio</p>
+      <h1>Sami Tolonen</h1>
+      <p class="pitch">Rakennan ja ylläpidän omia palvelimia, palveluita ja työkaluja. Toteutan ne tekoälyavusteisesti: määrittelen tarpeen, ohjaan toteutusta, testaan lopputuloksen ja vastaan ylläpidosta.</p>
+      <div class="actions">
+        <a class="btn" href="mailto:sami.tolonen.it@gmail.com">sami.tolonen.it@gmail.com</a>
+        <a class="btn btn-ghost" href="#projektit">Katso projektit</a>
+        <span class="meta">Oulu ja Kainuu</span>
       </div>
-      <p class="lead">Obsidian-holvi, joka pitää kirjaa kymmenien projektien tilasta, palvelinyhteyksistä ja päätöksistä.</p>
-      <ul>
-        <li>Jokaisella projektilla on muistio: mitä on tehty, miten se on varmennettu, mitkä asiat ovat auki ja mistä lähteet löytyvät.</li>
-        <li>Tekoälyagentit lukevat muistion työn alussa ja kirjaavat lopuksi varmennetun nykytilan. Havainnot luokitellaan tason mukaan: raportoitu, tiedostosta tarkistettu, testillä varmennettu tai tuotannosta havaittu.</li>
-        <li>Holvi synkronoituu Windows-koneen ja Android-puhelimen välillä Syncthingillä (TLS-salattu yhteys, tiedostoversiointi, synkronoinnin poissulkusäännöt). Muistiinpanot kulkevat molempiin suuntiin.</li>
-        <li>Ennen käyttöönottoa tein holvista tarkistetun varmuuskopion ja varmistin ladatun ohjelman aitouden SHA-256-tarkisteella. Selvitin myös myöhemmän yhteyskatkoksen lokien perusteella.</li>
-        <li>Salaisuudet, avaimet ja raakalokit pidetään holvin ulkopuolella. Holvissa on vain yhteyden nimi ja ohjeen sijainti.</li>
+    </div>
+    <aside class="focus-card" aria-label="Osaamisalueet">
+      <h2>Mitä osaan käytännössä</h2>
+      <ul class="focus-list">
+        <li><svg aria-hidden="true"><use href="#i-server"/></svg><div><strong>Palvelimet ja ylläpito</strong><span>Linux, Windows, nginx, systemd, SSH</span></div></li>
+        <li><svg aria-hidden="true"><use href="#i-pulse"/></svg><div><strong>Vianmääritys</strong><span>Lokit, verkkodiagnostiikka, tapahtumaloki</span></div></li>
+        <li><svg aria-hidden="true"><use href="#i-shield"/></svg><div><strong>Tietoturva</strong><span>TLS, asiakasvarmenteet, eheystarkisteet</span></div></li>
+        <li><svg aria-hidden="true"><use href="#i-book"/></svg><div><strong>Dokumentointi</strong><span>Varmennettu nykytila, ohjeet, päätökset</span></div></li>
       </ul>
-      <ul class="chips"><li>Obsidian</li><li>Markdown</li><li>Syncthing</li><li>Android</li><li>Tekoälyagentit</li><li>Dokumentointi</li></ul>
-    </article>
-  </section>
+    </aside>
+  </div>
+</header>
 
-  <section>
+<main class="wrap" id="projektit">
+  <div class="section-head">
     <h2>Projektit</h2>
+    <p>Avaa kortti, niin näet tarkemmin mitä tein.</p>
+  </div>
 
-    <article class="project">
-      <div class="project-head">
+  <div class="grid">
+    <button class="card featured" data-project="secondbrain" style="--hue:#7c4dff">
+      <div class="cover" aria-hidden="true">
+        <svg viewBox="0 0 640 190" preserveAspectRatio="xMidYMid slice">
+          <g stroke="currentColor" stroke-width="2" opacity=".55" fill="none">
+            <path d="M120 95L230 50M120 95L240 140M230 50L360 80M240 140L360 80M360 80L480 40M360 80L470 140M480 40L560 95M470 140L560 95M230 50L240 140"/>
+          </g>
+          <g fill="currentColor">
+            <circle cx="120" cy="95" r="10"/><circle cx="230" cy="50" r="8"/><circle cx="240" cy="140" r="8"/>
+            <circle cx="360" cy="80" r="14"/><circle cx="480" cy="40" r="8"/><circle cx="470" cy="140" r="8"/><circle cx="560" cy="95" r="10"/>
+          </g>
+        </svg>
+        <span class="tag">Tiedonhallinta</span>
+        <span class="new">Uusin</span>
+      </div>
+      <div class="card-body">
+        <h3>SecondBrain – projektien tietopankki</h3>
+        <p>Obsidian-holvi, joka pitää kirjaa kymmenien projektien tilasta ja ohjaa tekoälyagenttien työtä. Synkronoituu salattuna puhelimen ja koneen välillä.</p>
+        <p class="shows"><b>Osoittaa:</b> dokumentointia, muutosten varmentamista ja synkronointiratkaisun käyttöönottoa</p>
+        <span class="more">Avaa <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      </div>
+    </button>
+
+    <button class="card" data-project="palvelin" style="--hue:#0ea5a4">
+      <div class="cover" aria-hidden="true">
+        <svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
+          <g fill="none" stroke="currentColor" stroke-width="2.5" opacity=".75">
+            <rect x="170" y="28" width="120" height="26" rx="6"/><rect x="170" y="62" width="120" height="26" rx="6"/><rect x="170" y="96" width="120" height="26" rx="6"/>
+          </g>
+          <g fill="currentColor"><circle cx="186" cy="41" r="4"/><circle cx="186" cy="75" r="4"/><circle cx="186" cy="109" r="4"/></g>
+          <g stroke="currentColor" stroke-width="3" stroke-linecap="round" opacity=".5"><path d="M210 41h60M210 75h45M210 109h55"/></g>
+        </svg>
+        <span class="tag">Ylläpito</span>
+      </div>
+      <div class="card-body">
         <h3>Oma Linux-palvelinympäristö</h3>
+        <p>Virtuaalipalvelin, jolla pyörii useita omia verkkopalveluita.</p>
+        <p class="shows"><b>Osoittaa:</b> Linux-ylläpitoa, palveluiden hallintaa ja vianmääritystä</p>
+        <span class="more">Avaa <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
       </div>
-      <p class="lead">Virtuaalipalvelin, jolla pyörii useita omia verkkopalveluita.</p>
-      <ul>
-        <li>Python-taustapalveluita systemd-palveluina, julkinen liikenne nginx-reitityksen ja HTTPS:n kautta.</li>
-        <li>Ylläpito SSH:lla: asennukset, päivitykset, palveluiden tilan seuranta ja vianmääritys lokeista.</li>
-        <li>Palvelimen rakenteen kartoitus ja dokumentointi lukuoikeuksin, ilman muutoksia tuotantoon.</li>
-        <li>Lisäksi erillinen pilvipalvelin VPN-yhteyden reunapalvelimena.</li>
-      </ul>
-      <ul class="chips"><li>Linux</li><li>nginx</li><li>systemd</li><li>SSH</li><li>HTTPS / TLS</li><li>VPN</li></ul>
-    </article>
+    </button>
 
-    <article class="project">
-      <div class="project-head">
+    <button class="card" data-project="verkko" style="--hue:#f59e0b">
+      <div class="cover" aria-hidden="true">
+        <svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
+          <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 110h300" stroke-width="1.5" opacity=".35" stroke-dasharray="4 6"/>
+            <path d="M20 100l20-4 20 6 20-3 20 5 20-4 20 2 14-70 14 80 20-8 20 4 20-3 20 5 20-4 20 3 20-2" stroke-width="3"/>
+          </g>
+          <circle cx="174" cy="32" r="6" fill="currentColor"/>
+        </svg>
+        <span class="tag">Vianmääritys</span>
+      </div>
+      <div class="card-body">
         <h3>Verkkohäiriöiden seurantatyökalu</h3>
-        <span class="date">2026</span>
+        <p>Windows-sovellus, joka mittaa viivettä ja hävikkiä ja kerää ajuritapahtumat häiriön hetkellä.</p>
+        <p class="shows"><b>Osoittaa:</b> verkkovikojen rajaamista ja Windowsin tuntemusta</p>
+        <span class="more">Avaa <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
       </div>
-      <p class="lead">Windows-työpöytäsovellus kotiverkon katkosten ja hävikin selvittämiseen.</p>
-      <ul>
-        <li>Pingaa jatkuvasti reititintä ja internetin kohteita sekä näyttää viivehistorian, pakettihävikin ja koneen liikennemäärät.</li>
-        <li>Häiriön sattuessa varoittaa äänellä ja ikkunalla sekä kerää samalta ajalta WLAN-, USB- ja verkkoajuritapahtumat Windowsin tapahtumalokista.</li>
-        <li>Lokit kiertävät automaattisesti, joten seuranta voi olla päällä pitkään. Työkalu ei muuta verkkoasetuksia.</li>
-        <li>Seurannalla todensin, että yhteys toimi modeemin siirron jälkeen ilman hävikkiä.</li>
-      </ul>
-      <ul class="chips"><li>Python</li><li>Tkinter</li><li>Windows</li><li>Verkkodiagnostiikka</li><li>Tapahtumaloki</li></ul>
-    </article>
+    </button>
 
-    <article class="project">
-      <div class="project-head">
+    <button class="card" data-project="seuranta" style="--hue:#ef4444">
+      <div class="cover" aria-hidden="true">
+        <svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
+          <g fill="none" stroke="currentColor" stroke-width="2" opacity=".45">
+            <circle cx="230" cy="80" r="56"/><circle cx="230" cy="80" r="36"/><circle cx="230" cy="80" r="16"/>
+          </g>
+          <path d="M230 80L278 50A56 56 0 0 0 230 24z" fill="currentColor" opacity=".35"/>
+          <g fill="currentColor"><circle cx="252" cy="48" r="5"/><circle cx="198" cy="104" r="5"/><circle cx="266" cy="96" r="4"/></g>
+        </svg>
+        <span class="tag">Tietoturva</span>
+      </div>
+      <div class="card-body">
         <h3>Kävijä- ja tietoturvaseuranta</h3>
+        <p>Reaaliaikainen hallintapaneeli omien palveluiden käytön ja tietoturvatapahtumien seurantaan.</p>
+        <p class="shows"><b>Osoittaa:</b> lokien analysointia ja poikkeamien tunnistamista</p>
+        <span class="more">Avaa <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
       </div>
-      <p class="lead">Reaaliaikainen hallintapaneeli omien verkkopalveluiden käytön ja tietoturvatapahtumien seurantaan.</p>
-      <ul>
-        <li>Lukee palveluiden lokitiedostoja ja koostaa niistä kirjautumiset, sivulataukset, istunnot ja IP-osoitteiden sijaintitiedot.</li>
-        <li>Tunnistaa bottiliikenteen ja tietoturvatapahtumat. Uudet tapahtumat päivittyvät näkymään WebSocketin kautta.</li>
-        <li>Kirjautumissuojattu selainkäyttöliittymä, jossa on vaalea ja tumma teema.</li>
-      </ul>
-      <ul class="chips"><li>Python</li><li>FastAPI</li><li>WebSocket</li><li>JavaScript</li><li>Lokianalyysi</li></ul>
-    </article>
+    </button>
 
-    <article class="project">
-      <div class="project-head">
+    <button class="card" data-project="jakelu" style="--hue:#2563eb">
+      <div class="cover" aria-hidden="true">
+        <svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
+          <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" opacity=".8">
+            <path d="M200 40l50-22 50 22v56l-50 22-50-22z"/><path d="M200 40l50 22 50-22M250 62v56"/>
+          </g>
+          <path d="M150 104l12 12 24-26" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span class="tag">Jakelu</span>
+      </div>
+      <div class="card-body">
         <h3>Ohjelmistojen jakelu- ja päivityspalvelu</h3>
-        <span class="date">2026</span>
+        <p>Asennusohjelma ja automaattiset päivitykset, joissa jokaisen tiedoston eheys tarkistetaan.</p>
+        <p class="shows"><b>Osoittaa:</b> ohjelmistojakelua, varmenteita ja eheystarkistuksia</p>
+        <span class="more">Avaa <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
       </div>
-      <p class="lead">Pelin modipaketin asennus ja automaattiset päivitykset pienelle käyttäjäryhmälle.</p>
-      <ul>
-        <li>Asennusohjelma sekä pelaajille että pelipalvelimelle, ja päivittäjä, joka hakee uudet versiot palvelimelta.</li>
-        <li>Päivitykset kuvataan allekirjoitetussa manifestissa. Asennettujen tiedostojen eheys tarkistetaan SHA-256-tarkisteilla.</li>
-        <li>Jakelu on rajattu asiakasvarmenteilla (mTLS): jokainen kone luo oman avaimensa ja rekisteröityy palveluun.</li>
-        <li>Pelipalvelimen asennus ja ylläpito Windows-ympäristössä.</li>
-      </ul>
-      <ul class="chips"><li>Ohjelmistojakelu</li><li>mTLS</li><li>SHA-256</li><li>nginx</li></ul>
-    </article>
+    </button>
 
-    <article class="project">
-      <div class="project-head">
+    <button class="card" data-project="muut" style="--hue:#10b981">
+      <div class="cover" aria-hidden="true">
+        <svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
+          <g fill="none" stroke="currentColor" stroke-width="2.5" opacity=".75">
+            <rect x="160" y="30" width="56" height="56" rx="12"/><rect x="226" y="30" width="56" height="56" rx="12"/><rect x="193" y="92" width="56" height="40" rx="12"/>
+          </g>
+        </svg>
+        <span class="tag">Kehitys</span>
+      </div>
+      <div class="card-body">
         <h3>Muita projekteja</h3>
+        <p>Kaupankäyntipeli, ajopäiväkirja ja sähkön hinta kulutuskaavioon.</p>
+        <p class="shows"><b>Osoittaa:</b> verkkosovellusten ja rajapintojen toteutusta</p>
+        <span class="more">Avaa <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
       </div>
-      <ul>
-        <li><strong>Selainpohjainen kaupankäyntipeli:</strong> pelilogiikka, tietokanta ja selainkäyttöliittymä.</li>
-        <li><strong>Ajopäiväkirjasovellus:</strong> taustapalvelu ja rajapinta palvelimella.</li>
-        <li><strong>Sähkön hinta kulutuskaavioon:</strong> selaimen käyttäjäskripti, joka lisää pörssisähkön hinnan sähköyhtiön kulutuskaavioon.</li>
-      </ul>
-    </article>
-  </section>
+    </button>
+  </div>
 
-  <section>
-    <h2>Taidot käytännössä</h2>
-    <div class="skills">
+  <section class="skills" aria-labelledby="taidot">
+    <h2 id="taidot">Työkalupakki</h2>
+    <div class="skill-grid">
       <div>
         <h3>Palvelimet ja ylläpito</h3>
-        <p>Linux, nginx, systemd, SSH, Windows, PowerShell, varmuuskopiointi, päivitykset, HTTPS/TLS</p>
+        <ul class="chips"><li>Linux</li><li>Windows</li><li>nginx</li><li>systemd</li><li>SSH</li><li>PowerShell</li><li>Varmuuskopiointi</li></ul>
       </div>
       <div>
-        <h3>Vianmääritys</h3>
-        <p>Lokien analysointi, verkkodiagnostiikka, Windowsin tapahtumaloki, järjestelmällinen rajaaminen ja testaus</p>
+        <h3>Verkko ja tietoturva</h3>
+        <ul class="chips"><li>HTTPS / TLS</li><li>mTLS</li><li>VPN</li><li>Verkkodiagnostiikka</li><li>SHA-256</li></ul>
       </div>
       <div>
-        <h3>Ohjelmointi ja verkko</h3>
-        <p>Python, FastAPI, SQL/SQLite, HTML, CSS, JavaScript, REST-rajapinnat, WebSocket</p>
+        <h3>Ohjelmointi</h3>
+        <ul class="chips"><li>Python</li><li>FastAPI</li><li>SQL / SQLite</li><li>JavaScript</li><li>HTML / CSS</li><li>REST</li><li>WebSocket</li></ul>
       </div>
       <div>
-        <h3>Työtavat ja työkalut</h3>
-        <p>Git, tekoälyagentit (Codex, Claude Code), Obsidian, Syncthing, dokumentointi ja muutosten varmentaminen</p>
+        <h3>Työtavat</h3>
+        <ul class="chips"><li>Git</li><li>Tekoälyagentit</li><li>Obsidian</li><li>Syncthing</li><li>Dokumentointi</li></ul>
       </div>
     </div>
   </section>
 
-  <footer>Sivu toimii myös tulostettuna tai PDF:nä tallennettuna.</footer>
+  <footer>
+    <span>Sami Tolonen · <a href="mailto:sami.tolonen.it@gmail.com">sami.tolonen.it@gmail.com</a></span>
+    <span>Koulutus ja työhistoria löytyvät CV:stä.</span>
+  </footer>
 </main>
+
+<dialog id="detail" aria-labelledby="detail-title">
+  <div class="dlg-inner">
+    <button class="dlg-close" type="button" aria-label="Sulje">×</button>
+    <div class="dlg-cover cover" aria-hidden="true"></div>
+    <div class="dlg-body"></div>
+  </div>
+</dialog>
+
+<template id="tpl-secondbrain">
+  <h2 id="detail-title">SecondBrain – projektien tietopankki ja tekoälyagenttien työnkulku</h2>
+  <p class="lead">Obsidian-holvi, joka pitää kirjaa kymmenien projektien tilasta, palvelinyhteyksistä ja päätöksistä.</p>
+  <h3>Lähtötilanne</h3>
+  <p>Projekteja oli kertynyt niin paljon, ettei niiden tilaa, yhteyksiä ja aiempia päätöksiä enää muistanut. Tekoälyagentit aloittivat jokaisen tehtävän tyhjästä.</p>
+  <h3>Mitä tein</h3>
+  <ul>
+    <li>Jokaisella projektilla on muistio: mitä on tehty, miten se on varmennettu, mitkä asiat ovat auki ja mistä lähteet löytyvät.</li>
+    <li>Tekoälyagentit lukevat muistion työn alussa ja kirjaavat lopuksi varmennetun nykytilan. Havainnot luokitellaan tason mukaan: raportoitu, tiedostosta tarkistettu, testillä varmennettu tai tuotannosta havaittu.</li>
+    <li>Holvi synkronoituu Windows-koneen ja Android-puhelimen välillä Syncthingillä (TLS-salattu yhteys, tiedostoversiointi, synkronoinnin poissulkusäännöt).</li>
+    <li>Ennen käyttöönottoa tein holvista tarkistetun varmuuskopion ja varmistin ladatun ohjelman aitouden SHA-256-tarkisteella. Myöhemmän yhteyskatkoksen selvitin lokien perusteella.</li>
+    <li>Salaisuudet, avaimet ja raakalokit pidetään holvin ulkopuolella. Holvissa on vain yhteyden nimi ja ohjeen sijainti.</li>
+  </ul>
+  <div class="callout">
+    <h3>Mitä tämä osoittaa</h3>
+    <ul>
+      <li>Dokumentoin niin, että seuraava tekijä pääsee jatkamaan.</li>
+      <li>Erotan oletetun ja varmennetun tiedon.</li>
+      <li>Otan uuden järjestelmän käyttöön hallitusti: varmuuskopio, tarkistus ja testaus.</li>
+    </ul>
+  </div>
+  <ul class="chips"><li>Obsidian</li><li>Markdown</li><li>Syncthing</li><li>Android</li><li>Tekoälyagentit</li></ul>
+</template>
+
+<template id="tpl-palvelin">
+  <h2 id="detail-title">Oma Linux-palvelinympäristö</h2>
+  <p class="lead">Virtuaalipalvelin, jolla pyörii useita omia verkkopalveluita.</p>
+  <h3>Mitä tein</h3>
+  <ul>
+    <li>Python-taustapalvelut pyörivät systemd-palveluina, ja julkinen liikenne kulkee nginx-reitityksen ja HTTPS:n kautta.</li>
+    <li>Ylläpito tapahtuu SSH:lla: asennukset, päivitykset, palveluiden tilan seuranta ja vianmääritys lokeista.</li>
+    <li>Kartoitin ja dokumentoin palvelimen rakenteen lukuoikeuksin tekemättä muutoksia tuotantoon.</li>
+    <li>Lisäksi erillinen pilvipalvelin toimii VPN-yhteyden reunapalvelimena.</li>
+  </ul>
+  <div class="callout">
+    <h3>Mitä tämä osoittaa</h3>
+    <ul>
+      <li>Osaan ylläpitää Linux-palvelinta komentoriviltä.</li>
+      <li>Ymmärrän, miten palvelu, käänteinen välityspalvelin ja varmenteet liittyvät toisiinsa.</li>
+      <li>Toimin tuotannossa varovasti: tarkistan ennen kuin muutan.</li>
+    </ul>
+  </div>
+  <ul class="chips"><li>Linux</li><li>nginx</li><li>systemd</li><li>SSH</li><li>HTTPS / TLS</li><li>VPN</li></ul>
+</template>
+
+<template id="tpl-verkko">
+  <h2 id="detail-title">Verkkohäiriöiden seurantatyökalu</h2>
+  <p class="lead">Windows-työpöytäsovellus kotiverkon katkosten ja hävikin selvittämiseen.</p>
+  <h3>Lähtötilanne</h3>
+  <p>Yhteys katkeili satunnaisesti, eikä yksittäisestä pingistä selvinnyt, oliko vika koneessa, ajurissa vai reitittimessä.</p>
+  <h3>Mitä tein</h3>
+  <ul>
+    <li>Työkalu pingaa jatkuvasti reititintä ja internetin kohteita sekä näyttää viivehistorian, pakettihävikin ja koneen liikennemäärät.</li>
+    <li>Häiriön sattuessa se varoittaa äänellä ja ikkunalla sekä kerää samalta ajalta WLAN-, USB- ja verkkoajuritapahtumat Windowsin tapahtumalokista.</li>
+    <li>Lokit kiertävät automaattisesti, joten seuranta voi olla päällä pitkään. Työkalu ei muuta verkkoasetuksia.</li>
+    <li>Seurannalla todensin, että yhteys toimi modeemin siirron jälkeen ilman hävikkiä.</li>
+  </ul>
+  <div class="callout">
+    <h3>Mitä tämä osoittaa</h3>
+    <ul>
+      <li>Rajaan vian järjestelmällisesti: kone, ajuri, reititin vai yhteys.</li>
+      <li>Tunnen Windowsin tapahtumalokin ja verkkosovittimet.</li>
+      <li>Tiedän mittausten rajat: ping ei kerro kaistasta, ja VPN vaikuttaa tuloksiin.</li>
+    </ul>
+  </div>
+  <ul class="chips"><li>Python</li><li>Tkinter</li><li>Windows</li><li>Verkkodiagnostiikka</li><li>Tapahtumaloki</li></ul>
+</template>
+
+<template id="tpl-seuranta">
+  <h2 id="detail-title">Kävijä- ja tietoturvaseuranta</h2>
+  <p class="lead">Reaaliaikainen hallintapaneeli omien verkkopalveluiden käytön ja tietoturvatapahtumien seurantaan.</p>
+  <h3>Mitä tein</h3>
+  <ul>
+    <li>Palvelu lukee lokitiedostoja ja koostaa niistä kirjautumiset, sivulataukset, istunnot ja IP-osoitteiden sijaintitiedot.</li>
+    <li>Se tunnistaa bottiliikenteen ja tietoturvatapahtumat. Uudet tapahtumat päivittyvät näkymään WebSocketin kautta.</li>
+    <li>Selainkäyttöliittymä on kirjautumissuojattu, ja siinä on vaalea ja tumma teema.</li>
+  </ul>
+  <div class="callout">
+    <h3>Mitä tämä osoittaa</h3>
+    <ul>
+      <li>Osaan lukea ja hyödyntää palvelinlokeja.</li>
+      <li>Tunnistan poikkeavaa liikennettä ja kirjautumisyrityksiä.</li>
+    </ul>
+  </div>
+  <ul class="chips"><li>Python</li><li>FastAPI</li><li>WebSocket</li><li>JavaScript</li><li>Lokianalyysi</li></ul>
+</template>
+
+<template id="tpl-jakelu">
+  <h2 id="detail-title">Ohjelmistojen jakelu- ja päivityspalvelu</h2>
+  <p class="lead">Pelin modipaketin asennus ja automaattiset päivitykset pienelle käyttäjäryhmälle.</p>
+  <h3>Mitä tein</h3>
+  <ul>
+    <li>Asennusohjelmat pelaajille ja pelipalvelimelle sekä päivittäjä, joka hakee uudet versiot palvelimelta.</li>
+    <li>Päivitykset kuvataan allekirjoitetussa manifestissa, ja asennettujen tiedostojen eheys tarkistetaan SHA-256-tarkisteilla.</li>
+    <li>Jakelu on rajattu asiakasvarmenteilla (mTLS): jokainen kone luo oman avaimensa ja rekisteröityy palveluun.</li>
+    <li>Pelipalvelimen asennus ja ylläpito Windows-ympäristössä.</li>
+  </ul>
+  <div class="callout">
+    <h3>Mitä tämä osoittaa</h3>
+    <ul>
+      <li>Ymmärrän ohjelmistojakelun ja päivitysten hallinnan käyttäjäkoneille.</li>
+      <li>Osaan käyttää varmenteita ja tarkisteita jakelun suojaamiseen.</li>
+    </ul>
+  </div>
+  <ul class="chips"><li>Ohjelmistojakelu</li><li>mTLS</li><li>SHA-256</li><li>nginx</li><li>Windows</li></ul>
+</template>
+
+<template id="tpl-muut">
+  <h2 id="detail-title">Muita projekteja</h2>
+  <p class="lead">Pienempiä sovelluksia ja työkaluja omaan käyttöön.</p>
+  <h3>Projektit</h3>
+  <ul>
+    <li><strong>Selainpohjainen kaupankäyntipeli:</strong> pelilogiikka, tietokanta ja selainkäyttöliittymä.</li>
+    <li><strong>Ajopäiväkirjasovellus:</strong> taustapalvelu ja rajapinta palvelimella.</li>
+    <li><strong>Sähkön hinta kulutuskaavioon:</strong> selaimen käyttäjäskripti, joka lisää pörssisähkön hinnan sähköyhtiön kulutuskaavioon.</li>
+  </ul>
+  <ul class="chips"><li>Python</li><li>SQL</li><li>JavaScript</li><li>REST</li></ul>
+</template>
+
+<script>
+(function () {
+  var dlg = document.getElementById('detail');
+  var body = dlg.querySelector('.dlg-body');
+  var cover = dlg.querySelector('.dlg-cover');
+  var lastCard = null;
+
+  function open(id, card) {
+    var tpl = document.getElementById('tpl-' + id);
+    if (!tpl) return;
+    card = card || document.querySelector('.card[data-project="' + id + '"]');
+    lastCard = card;
+    body.replaceChildren(tpl.content.cloneNode(true));
+    var src = card && card.querySelector('.cover svg');
+    cover.replaceChildren();
+    if (src) cover.appendChild(src.cloneNode(true));
+    dlg.style.setProperty('--hue', card ? card.style.getPropertyValue('--hue') : '');
+    cover.style.setProperty('--hue', card ? card.style.getPropertyValue('--hue') : '');
+    if (!dlg.open) dlg.showModal();
+    dlg.querySelector('.dlg-inner').scrollTop = 0;
+    if (location.hash !== '#' + id) history.replaceState(null, '', '#' + id);
+  }
+
+  document.querySelectorAll('.card[data-project]').forEach(function (card) {
+    card.addEventListener('click', function () { open(card.dataset.project, card); });
+  });
+  dlg.querySelector('.dlg-close').addEventListener('click', function () { dlg.close(); });
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  dlg.addEventListener('close', function () {
+    history.replaceState(null, '', location.pathname + location.search);
+    if (lastCard) lastCard.focus();
+  });
+
+  var initial = location.hash.slice(1);
+  if (initial && document.getElementById('tpl-' + initial)) open(initial);
+})();
+</script>
 </body>
 </html>
