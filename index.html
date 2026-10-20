@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="fi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Sami Tolonen – IT-projektit</title>
+<meta name="description" content="Käytännön IT-projekteja: palvelinten ylläpito, verkkoseuranta, automaatio ja tiedonhallinta.">
+<style>
+:root {
+  --bg: #f6f6f9;
+  --paper: #ffffff;
+  --ink: #1d1b26;
+  --ink-2: #565266;
+  --line: #e3e1ea;
+  --accent: #4b2a9e;
+  --accent-soft: #efeaff;
+  --chip-border: #cfc8e6;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121118;
+    --paper: #1b1a23;
+    --ink: #ebe9f2;
+    --ink-2: #a8a3b8;
+    --line: #2e2b3a;
+    --accent: #b9a2ff;
+    --accent-soft: #2a2440;
+    --chip-border: #433b5e;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 16px/1.6 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+main {
+  max-width: 860px;
+  margin: 40px auto;
+  padding: 48px 56px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+}
+header { border-bottom: 1px solid var(--line); padding-bottom: 24px; margin-bottom: 8px; }
+h1 { margin: 0; font-size: 2rem; line-height: 1.2; letter-spacing: -0.01em; }
+.role { margin: 6px 0 16px; font-size: 1.15rem; color: var(--accent); font-weight: 600; }
+.contact { display: flex; flex-wrap: wrap; gap: 8px 24px; margin: 0 0 16px; padding: 0; list-style: none; color: var(--ink-2); }
+.contact a { color: var(--ink); text-decoration-color: var(--chip-border); text-underline-offset: 3px; }
+.contact a:hover { color: var(--accent); }
+h2 {
+  margin: 36px 0 14px;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+}
+p { margin: 0 0 12px; }
+ul { margin: 0 0 12px; padding-left: 20px; }
+li { margin-bottom: 4px; }
+.project { margin-bottom: 28px; }
+.project:last-child { margin-bottom: 0; }
+.project-head { display: flex; justify-content: space-between; gap: 16px; align-items: baseline; flex-wrap: wrap; }
+.project h3 { margin: 0; font-size: 1.1rem; }
+.date { color: var(--ink-2); font-size: 0.92rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.lead { color: var(--ink-2); margin: 2px 0 8px; }
+.featured {
+  padding: 22px 24px;
+  border: 1px solid var(--chip-border);
+  border-radius: 10px;
+  background: var(--accent-soft);
+}
+.badge {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 1px 10px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--paper);
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+}
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 0; padding: 0; list-style: none; }
+.chips li {
+  margin: 0;
+  padding: 2px 10px;
+  border: 1px solid var(--chip-border);
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: var(--ink-2);
+}
+.skills { display: grid; grid-template-columns: 1fr 1fr; gap: 16px 40px; }
+.skills h3 { margin: 0 0 4px; font-size: 1rem; }
+.skills p { color: var(--ink-2); margin: 0; }
+footer { margin-top: 36px; padding-top: 16px; border-top: 1px solid var(--line); color: var(--ink-2); font-size: 0.85rem; }
+
+@media (max-width: 700px) {
+  main { margin: 0; padding: 28px 16px; border: 0; border-radius: 0; }
+  h1 { font-size: 1.7rem; }
+  .featured { padding: 18px 16px; }
+  .skills { grid-template-columns: 1fr; }
+}
+@media print {
+  :root { --bg: #fff; --paper: #fff; --ink: #000; --ink-2: #444; --accent: #3b1f85; --accent-soft: #fff; --line: #ccc; --chip-border: #999; }
+  body { font-size: 10.5pt; }
+  main { margin: 0; padding: 0; border: 0; max-width: none; }
+  h2 { margin-top: 18px; }
+  .project { break-inside: avoid; }
+  .badge { color: #fff; print-color-adjust: exact; -webkit-print-color-adjust: exact; }
+  footer { display: none; }
+}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Sami Tolonen</h1>
+    <p class="role">IT-tuki, ylläpito ja automaatio – käytännön projekteja</p>
+    <ul class="contact">
+      <li><a href="mailto:sami.tolonen.it@gmail.com">sami.tolonen.it@gmail.com</a></li>
+      <li>Oulu ja Kainuu</li>
+    </ul>
+    <p>Rakennan ja ylläpidän omia palveluita, palvelimia ja työkaluja. Toteutan ne tekoälyavusteisesti: määrittelen tarpeen, ohjaan toteutusta, testaan lopputuloksen ja vastaan ylläpidosta. Tämä sivu esittelee, mitä olen tehnyt käytännössä. Koulutus ja työhistoria löytyvät CV:stä.</p>
+  </header>
+
+  <section>
+    <h2>Uusimpana</h2>
+    <article class="project featured">
+      <span class="badge">Syksy 2026</span>
+      <div class="project-head">
+        <h3>SecondBrain – projektien tietopankki ja tekoälyagenttien työnkulku</h3>
+      </div>
+      <p class="lead">Obsidian-holvi, joka pitää kirjaa kymmenien projektien tilasta, palvelinyhteyksistä ja päätöksistä.</p>
+      <ul>
+        <li>Jokaisella projektilla on muistio: mitä on tehty, miten se on varmennettu, mitkä asiat ovat auki ja mistä lähteet löytyvät.</li>
+        <li>Tekoälyagentit lukevat muistion työn alussa ja kirjaavat lopuksi varmennetun nykytilan. Havainnot luokitellaan tason mukaan: raportoitu, tiedostosta tarkistettu, testillä varmennettu tai tuotannosta havaittu.</li>
+        <li>Holvi synkronoituu Windows-koneen ja Android-puhelimen välillä Syncthingillä (TLS-salattu yhteys, tiedostoversiointi, synkronoinnin poissulkusäännöt). Muistiinpanot kulkevat molempiin suuntiin.</li>
+        <li>Ennen käyttöönottoa tein holvista tarkistetun varmuuskopion ja varmistin ladatun ohjelman aitouden SHA-256-tarkisteella. Selvitin myös myöhemmän yhteyskatkoksen lokien perusteella.</li>
+        <li>Salaisuudet, avaimet ja raakalokit pidetään holvin ulkopuolella. Holvissa on vain yhteyden nimi ja ohjeen sijainti.</li>
+      </ul>
+      <ul class="chips"><li>Obsidian</li><li>Markdown</li><li>Syncthing</li><li>Android</li><li>Tekoälyagentit</li><li>Dokumentointi</li></ul>
+    </article>
+  </section>
+
+  <section>
+    <h2>Projektit</h2>
+
+    <article class="project">
+      <div class="project-head">
+        <h3>Oma Linux-palvelinympäristö</h3>
+      </div>
+      <p class="lead">Virtuaalipalvelin, jolla pyörii useita omia verkkopalveluita.</p>
+      <ul>
+        <li>Python-taustapalveluita systemd-palveluina, julkinen liikenne nginx-reitityksen ja HTTPS:n kautta.</li>
+        <li>Ylläpito SSH:lla: asennukset, päivitykset, palveluiden tilan seuranta ja vianmääritys lokeista.</li>
+        <li>Palvelimen rakenteen kartoitus ja dokumentointi lukuoikeuksin, ilman muutoksia tuotantoon.</li>
+        <li>Lisäksi erillinen pilvipalvelin VPN-yhteyden reunapalvelimena.</li>
+      </ul>
+      <ul class="chips"><li>Linux</li><li>nginx</li><li>systemd</li><li>SSH</li><li>HTTPS / TLS</li><li>VPN</li></ul>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <h3>Verkkohäiriöiden seurantatyökalu</h3>
+        <span class="date">2026</span>
+      </div>
+      <p class="lead">Windows-työpöytäsovellus kotiverkon katkosten ja hävikin selvittämiseen.</p>
+      <ul>
+        <li>Pingaa jatkuvasti reititintä ja internetin kohteita sekä näyttää viivehistorian, pakettihävikin ja koneen liikennemäärät.</li>
+        <li>Häiriön sattuessa varoittaa äänellä ja ikkunalla sekä kerää samalta ajalta WLAN-, USB- ja verkkoajuritapahtumat Windowsin tapahtumalokista.</li>
+        <li>Lokit kiertävät automaattisesti, joten seuranta voi olla päällä pitkään. Työkalu ei muuta verkkoasetuksia.</li>
+        <li>Seurannalla todensin, että yhteys toimi modeemin siirron jälkeen ilman hävikkiä.</li>
+      </ul>
+      <ul class="chips"><li>Python</li><li>Tkinter</li><li>Windows</li><li>Verkkodiagnostiikka</li><li>Tapahtumaloki</li></ul>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <h3>Kävijä- ja tietoturvaseuranta</h3>
+      </div>
+      <p class="lead">Reaaliaikainen hallintapaneeli omien verkkopalveluiden käytön ja tietoturvatapahtumien seurantaan.</p>
+      <ul>
+        <li>Lukee palveluiden lokitiedostoja ja koostaa niistä kirjautumiset, sivulataukset, istunnot ja IP-osoitteiden sijaintitiedot.</li>
+        <li>Tunnistaa bottiliikenteen ja tietoturvatapahtumat. Uudet tapahtumat päivittyvät näkymään WebSocketin kautta.</li>
+        <li>Kirjautumissuojattu selainkäyttöliittymä, jossa on vaalea ja tumma teema.</li>
+      </ul>
+      <ul class="chips"><li>Python</li><li>FastAPI</li><li>WebSocket</li><li>JavaScript</li><li>Lokianalyysi</li></ul>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <h3>Ohjelmistojen jakelu- ja päivityspalvelu</h3>
+        <span class="date">2026</span>
+      </div>
+      <p class="lead">Pelin modipaketin asennus ja automaattiset päivitykset pienelle käyttäjäryhmälle.</p>
+      <ul>
+        <li>Asennusohjelma sekä pelaajille että pelipalvelimelle, ja päivittäjä, joka hakee uudet versiot palvelimelta.</li>
+        <li>Päivitykset kuvataan allekirjoitetussa manifestissa. Asennettujen tiedostojen eheys tarkistetaan SHA-256-tarkisteilla.</li>
+        <li>Jakelu on rajattu asiakasvarmenteilla (mTLS): jokainen kone luo oman avaimensa ja rekisteröityy palveluun.</li>
+        <li>Pelipalvelimen asennus ja ylläpito Windows-ympäristössä.</li>
+      </ul>
+      <ul class="chips"><li>Ohjelmistojakelu</li><li>mTLS</li><li>SHA-256</li><li>nginx</li></ul>
+    </article>
+
+    <article class="project">
+      <div class="project-head">
+        <h3>Muita projekteja</h3>
+      </div>
+      <ul>
+        <li><strong>Selainpohjainen kaupankäyntipeli:</strong> pelilogiikka, tietokanta ja selainkäyttöliittymä.</li>
+        <li><strong>Ajopäiväkirjasovellus:</strong> taustapalvelu ja rajapinta palvelimella.</li>
+        <li><strong>Sähkön hinta kulutuskaavioon:</strong> selaimen käyttäjäskripti, joka lisää pörssisähkön hinnan sähköyhtiön kulutuskaavioon.</li>
+      </ul>
+    </article>
+  </section>
+
+  <section>
+    <h2>Taidot käytännössä</h2>
+    <div class="skills">
+      <div>
+        <h3>Palvelimet ja ylläpito</h3>
+        <p>Linux, nginx, systemd, SSH, Windows, PowerShell, varmuuskopiointi, päivitykset, HTTPS/TLS</p>
+      </div>
+      <div>
+        <h3>Vianmääritys</h3>
+        <p>Lokien analysointi, verkkodiagnostiikka, Windowsin tapahtumaloki, järjestelmällinen rajaaminen ja testaus</p>
+      </div>
+      <div>
+        <h3>Ohjelmointi ja verkko</h3>
+        <p>Python, FastAPI, SQL/SQLite, HTML, CSS, JavaScript, REST-rajapinnat, WebSocket</p>
+      </div>
+      <div>
+        <h3>Työtavat ja työkalut</h3>
+        <p>Git, tekoälyagentit (Codex, Claude Code), Obsidian, Syncthing, dokumentointi ja muutosten varmentaminen</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>Sivu toimii myös tulostettuna tai PDF:nä tallennettuna.</footer>
+</main>
+</body>
+</html>
