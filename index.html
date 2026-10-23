@@ -84,6 +84,7 @@ h1 { margin: 0; font-size: clamp(2.4rem, 5vw, 3.6rem); line-height: 1.05; letter
 .section-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; margin: 16px 0 20px; }
 .section-head h2 { margin: 0; font-size: 1.6rem; letter-spacing: -.02em; }
 .section-head p { margin: 0; color: var(--ink-3); }
+.section-head-sub { margin-top: 56px; }
 .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .card {
   position: relative; display: flex; flex-direction: column;
@@ -223,7 +224,7 @@ dialog::backdrop { background: rgba(15, 12, 25, .55); backdrop-filter: blur(4px)
 
 <main class="wrap" id="projektit">
   <div class="section-head">
-    <h2>Projektit</h2>
+    <h2>Työ ja osaaminen</h2>
     <p>Avaa kortti, niin näet tarkemmin mitä tein.</p>
   </div>
 
@@ -307,7 +308,36 @@ dialog::backdrop { background: rgba(15, 12, 25, .55); backdrop-filter: blur(4px)
       </div>
     </button>
 
-    <button class="card" data-project="jakelu" style="--hue:#2563eb">
+  </div>
+
+  <div class="section-head section-head-sub">
+    <h2>Harrastusprojektit</h2>
+    <p>Omaan ja kavereiden käyttöön tehtyjä.</p>
+  </div>
+
+  <div class="grid">
+    <button class="card featured" data-project="radio" style="--hue:#ec4899">
+      <div class="cover" aria-hidden="true">
+        <svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
+          <g fill="currentColor" opacity=".8">
+            <rect x="160" y="66" width="8" height="18" rx="4"/><rect x="176" y="50" width="8" height="50" rx="4"/><rect x="192" y="34" width="8" height="82" rx="4"/>
+            <rect x="208" y="56" width="8" height="38" rx="4"/><rect x="224" y="42" width="8" height="66" rx="4"/><rect x="240" y="60" width="8" height="30" rx="4"/>
+          </g>
+          <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" opacity=".5">
+            <path d="M266 52a32 32 0 010 46M278 40a50 50 0 010 70"/>
+          </g>
+        </svg>
+        <span class="tag">Tekoäly</span>
+      </div>
+      <div class="card-body">
+        <h3>Radio Paja – oma AI-radiokanava Discordiin</h3>
+        <p>Discord-botti, joka soittaa kuulijoiden toivemusiikkia. Kaksi tekoälyjuontajaa juontaa kappaleiden välissä ja lukee tasatunnein uutiskatsauksen.</p>
+        <p class="shows"><b>Osoittaa:</b> kielimallin hallittua käyttöä, ääniputken rakentamista ja palvelun ylläpitoa</p>
+        <span class="more">Avaa <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
+      </div>
+    </button>
+
+    <button class="card" data-project="nonepack" style="--hue:#2563eb">
       <div class="cover" aria-hidden="true">
         <svg viewBox="0 0 320 150" preserveAspectRatio="xMidYMid slice">
           <g fill="none" stroke="currentColor" stroke-width="2.5" stroke-linejoin="round" opacity=".8">
@@ -315,12 +345,12 @@ dialog::backdrop { background: rgba(15, 12, 25, .55); backdrop-filter: blur(4px)
           </g>
           <path d="M150 104l12 12 24-26" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-        <span class="tag">Jakelu</span>
+        <span class="tag">Pelit</span>
       </div>
       <div class="card-body">
-        <h3>Ohjelmistojen jakelu- ja päivityspalvelu</h3>
-        <p>Asennusohjelma ja automaattiset päivitykset, joissa jokaisen tiedoston eheys tarkistetaan.</p>
-        <p class="shows"><b>Osoittaa:</b> ohjelmistojakelua, varmenteita ja eheystarkistuksia</p>
+        <h3>NonePack – Valheim-modipaketti ja oma jakelupalvelu</h3>
+        <p>Kavereille jaettava modipaketti, jolla on oma asennusohjelma, päivittäjä ja jakelupalvelin. Korjaan ja teen paketin lisäosia tekoälyavustajan kanssa.</p>
+        <p class="shows"><b>Osoittaa:</b> ohjelmistojakelua, varmenteita ja vieraan koodin vianmääritystä</p>
         <span class="more">Avaa <svg aria-hidden="true"><use href="#i-arrow"/></svg></span>
       </div>
     </button>
@@ -466,24 +496,60 @@ dialog::backdrop { background: rgba(15, 12, 25, .55); backdrop-filter: blur(4px)
   <ul class="chips"><li>Python</li><li>FastAPI</li><li>WebSocket</li><li>JavaScript</li><li>Lokianalyysi</li></ul>
 </template>
 
-<template id="tpl-jakelu">
-  <h2 id="detail-title">Ohjelmistojen jakelu- ja päivityspalvelu</h2>
-  <p class="lead">Pelin modipaketin asennus ja automaattiset päivitykset pienelle käyttäjäryhmälle.</p>
+<template id="tpl-radio">
+  <h2 id="detail-title">Radio Paja – oma AI-radiokanava Discordiin</h2>
+  <p class="lead">Discord-botti, joka tekee äänikanavasta radiokanavan: toivemusiikkia, tekoälyjuontajat ja tasatunnin uutiset.</p>
+  <h3>Lähtötilanne</h3>
+  <p>Halusin porukan Discord-palvelimelle yhteisen radion, jossa musiikki ei vain soi peräkkäin, vaan välissä on juontoja ja uutisia kuten oikealla radiokanavalla.</p>
   <h3>Mitä tein</h3>
   <ul>
-    <li>Asennusohjelmat pelaajille ja pelipalvelimelle sekä päivittäjä, joka hakee uudet versiot palvelimelta.</li>
+    <li>Kuulijat lisäävät kappaleita yhteiseen jonoon YouTube- tai Suno-linkillä, haulla tai omalla äänitiedostolla. Jono, soittohistoria ja asetukset säilyvät uudelleenkäynnistyksen yli.</li>
+    <li>Juontajia on kaksi, kummallakin oma persoona ja ääni: ylipirteä Säde ja kuiva entinen kyläseppä Seppä. Kielimalli kirjoittaa avaukset ja välijuonnot, joissa juontaja kommentoi soineita kappaleita ja niiden pyytäjiä. Puhesynteesi tekee niistä äänen.</li>
+    <li>Juontoja säädetään Discordissa yhdellä komennolla: kumpi juontaja tai molemmat, kuinka monen kappaleen välein juonnetaan, tervehdys ja tasatunnin uutiset päälle tai pois.</li>
+    <li>Uutiskatsaus kootaan Ylen, Iltalehden ja Ilta-Sanomien RSS-syötteistä. Kielimalli ryhmittelee uutiset aiheittain ja kirjoittaa välispiikit, mutta uutistekstit muodostetaan ohjelmallisesti lähteiden omista lauseista ja lähde mainitaan aina. Malli ei siis pääse keksimään faktoja.</li>
+    <li>Jos kielimalli ei vastaa tai päiväkiintiö loppuu, botti käyttää valmiita juontoja eikä lähetys katkea.</li>
+    <li>FFmpeg muuntaa kappaleet, tasaa niiden äänenvoimakkuuden ja häivyttää vaihdot. Seuraavat kappaleet ja juonnot valmistellaan etukäteen, joten tauot jäävät lyhyiksi.</li>
+    <li>Botti pyörii omalla Linux-palvelimella systemd-palveluna. Koska YouTube estää palvelimen IP-osoitteen, äänen hakee erillinen hakija puhelimessa tai kotikoneella.</li>
+  </ul>
+  <h3>Pienellä vaivalla omaksi</h3>
+  <p>Oman kanavan saa käyntiin luomalla Discord-botin, kutsumalla sen palvelimelle ja käynnistämällä palvelun. Sama botti toimii usealla Discord-palvelimella, ja jokaisella on oma jono ja omat asetukset. Uutislähteet vaihdetaan asetuksista.</p>
+  <div class="callout">
+    <h3>Mitä tämä osoittaa</h3>
+    <ul>
+      <li>Käytän kielimallia osana palvelua hallitusti: rajattu syöte, tarkka vastausmuoto ja varasuunnitelma häiriöiden varalle.</li>
+      <li>Rakennan kokonaisuuden, joka nojaa useaan ulkoiseen palveluun, ja varaudun niiden katkoksiin.</li>
+      <li>Ylläpidän palvelua omalla palvelimella.</li>
+    </ul>
+  </div>
+  <ul class="chips"><li>Python</li><li>discord.py</li><li>Kielimalli</li><li>Puhesynteesi</li><li>FFmpeg</li><li>SQLite</li><li>RSS</li><li>systemd</li></ul>
+</template>
+
+<template id="tpl-nonepack">
+  <h2 id="detail-title">NonePack – Valheim-modipaketti, jakelupalvelu ja omat lisäosat</h2>
+  <p class="lead">Yksityinen Valheim-modipaketti kaveriporukalle: asennusohjelma, automaattiset päivitykset ja oma jakelupalvelin.</p>
+  <h3>Jakelu ja päivitykset</h3>
+  <ul>
+    <li>Asennusohjelmat pelaajille ja Windows-pelipalvelimelle sekä päivittäjä, joka hakee uudet versiot omalta palvelimelta.</li>
     <li>Päivitykset kuvataan allekirjoitetussa manifestissa, ja asennettujen tiedostojen eheys tarkistetaan SHA-256-tarkisteilla.</li>
-    <li>Jakelu on rajattu asiakasvarmenteilla (mTLS): jokainen kone luo oman avaimensa ja rekisteröityy palveluun.</li>
-    <li>Pelipalvelimen asennus ja ylläpito Windows-ympäristössä.</li>
+    <li>Jakelu on rajattu asiakasvarmenteilla (mTLS): jokainen kone luo oman avaimensa ja rekisteröityy palveluun. Palvelu pyörii nginxin takana Linux-virtuaalipalvelimella.</li>
+    <li>Julkaisutyökalu vertaa uutta julkaisua edelliseen ja tarkistaa palvelimelle viedyt paketit lataamalla ne takaisin.</li>
+  </ul>
+  <h3>Lisäosien korjaus</h3>
+  <ul>
+    <li>Kun pelin päivitys rikkoo lisäosan, selvitän syyn pelin lokista ja koodista. Esimerkiksi yksi lisäosa kaatui toistuvasti, koska pelin metodiin oli tullut uusi parametri. Korjasin kutsut vastaamaan pelin uutta versiota.</li>
+    <li>Korjasin paketin lisäosien toimintavirheitä, kuten sulattamon väärän materiaalijärjestyksen, ja tein oman lisäosan, joka valitsee kokkausasemalle parhaan lihan ja näyttää kypsymisajan.</li>
+    <li>Teen muutokset tekoälyavustajan kanssa: kuvaan ongelman, ohjaan muutosta ja testaan lopputuloksen pelissä ennen kuin se julkaistaan muille.</li>
   </ul>
   <div class="callout">
     <h3>Mitä tämä osoittaa</h3>
     <ul>
       <li>Ymmärrän ohjelmistojakelun ja päivitysten hallinnan käyttäjäkoneille.</li>
       <li>Osaan käyttää varmenteita ja tarkisteita jakelun suojaamiseen.</li>
+      <li>Pääsen kiinni vieraaseen koodiin ja rajaan vian lokien perusteella.</li>
+      <li>Käytän tekoälyä työkaluna ja tarkistan lopputuloksen itse.</li>
     </ul>
   </div>
-  <ul class="chips"><li>Ohjelmistojakelu</li><li>mTLS</li><li>SHA-256</li><li>nginx</li><li>Windows</li></ul>
+  <ul class="chips"><li>C#</li><li>BepInEx</li><li>mTLS</li><li>SHA-256</li><li>nginx</li><li>PowerShell</li></ul>
 </template>
 
 <template id="tpl-muut">
